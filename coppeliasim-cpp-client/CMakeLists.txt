@@ -130,9 +130,11 @@ install(EXPORT ${CMAKE_PROJECT_NAME}Targets DESTINATION ${COPPELIASIM_CLIENT_CMA
 # Add executable project
 set(EXE_PROJECT ${CMAKE_PROJECT_NAME}-exe)
 add_executable(${EXE_PROJECT} "coppeliasim-cpp-client.cpp")
-# find_package(PCL COMPONENTS common REQUIRED)
+# find_package(PCL REQUIRED)
+find_package(PCL COMPONENTS common REQUIRED)
 find_package(nlohmann_json 3.11.3 REQUIRED)
 #target_include_directories(${EXE_PROJECT} PRIVATE include)
 target_link_libraries(${EXE_PROJECT} PRIVATE ${CMAKE_PROJECT_NAME}
     nlohmann_json::nlohmann_json
+    ${PCL_LIBRARIES}
 )
